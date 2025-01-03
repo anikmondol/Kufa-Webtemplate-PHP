@@ -142,8 +142,8 @@ $result = mysqli_fetch_assoc($users);
                                                 <td class="name"><?= $user['name'] ?></td>
                                                 <td class="email"><?= $user['email'] ?></td>
 
-                                                <td><?= date("d-m-Y H:i:s", strtotime($user['created_at'])) ?></td>
-                                                <td><?= date("d-m-Y H:i:s", strtotime($user['updated_at'])) ?></td>
+                                                <td><?= date("d-m-Y h:i:s A", strtotime($user["created_at"])); ?></td>
+                                                <td><?= date("d-m-Y H:i:s A", strtotime($user['updated_at'])) ?></td>
 
                                                 <td><span class="badge badge-success">Success</span></td>
                                             </tr>

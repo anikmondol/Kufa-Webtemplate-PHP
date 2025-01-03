@@ -44,6 +44,7 @@ if (!isset($_SESSION['auth_id'])) {
     <link href="../../dashboard_assets/assets/plugins/pace/pace.css" rel="stylesheet">
     <link href="../../dashboard_assets/assets/plugins/highlight/styles/github-gist.css" rel="stylesheet">
     <link href="../../dashboard_assets/assets/plugins/datatables/datatables.min.css" rel="stylesheet">
+    
 
     
 
@@ -84,6 +85,9 @@ if (!isset($_SESSION['auth_id'])) {
        
                     <li class="active-page">
                         <a href="../home/home.php" class="active"><i class="material-icons-two-tone">dashboard</i>Dashboard</a>
+                    </li>
+                    <li class="active-page">
+                        <a href="../profile/profile.php" class="active"><i class="material-icons-two-tone">manage_accounts</i>Profile</a>
                     </li>
                     <li class="active-page">
                         <a href="../logout/logout.php" class="active"><i class="material-icons-two-tone">logout</i>logout</a>
