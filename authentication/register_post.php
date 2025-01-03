@@ -20,10 +20,6 @@ if (isset($_REQUEST['submit'])) {
         $_SESSION["name_error"] = "Name Field is Required!!!";
         $flag = true;
         header("location: register.php");
-    } elseif (!ctype_alpha($name)) {
-        $_SESSION["name_error"] = "We can't use any numerical character!!!";
-        $flag = true;
-        header("location: register.php");
     } else {
         $_SESSION["old_name"] = $name;
         header("location: register.php");

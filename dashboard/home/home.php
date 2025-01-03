@@ -3,10 +3,9 @@
 include("../master/header.php");
 
 
-$get_data_query = "SELECT * FROM `users`";
-$connect = mysqli_query($conn, $get_data_query);
-
-
+$users_query = "select * FROM users";
+$users = mysqli_query($conn, $users_query);
+$result = mysqli_fetch_assoc($users);
 
 
 ?>
@@ -111,28 +110,48 @@ $connect = mysqli_query($conn, $get_data_query);
                                         <th>S.NO</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Created</th>
+                                        <th>Updated</th>
                                         <th>Action</th>
                                     </tr>
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     <?php
-                                    $i = 1;
-                                    while ($row = mysqli_fetch_assoc($connect)) {
-
-                                        if ($row['id'] == $_SESSION['auth_id']) {
-                                            continue;
-                                        }
-
+                                    $number = 1;
+                                    if (empty($result)):
                                     ?>
                                         <tr>
-                                            <td><?= $i++; ?></td>
-                                            <td><?= $row['name'] ?></td>
-                                            <td><?= $row['email'] ?></td>
-                                            <td><span class="badge badge-success">Success</span></td>
+                                            <th colspan="5" class="text-center text-danger">
+                                                No data found!!
+                                            </th>
                                         </tr>
-                                        </tr>
-                                    <?php } ?>
+                                    <?php
+                                    else:
+                                        $id = $_SESSION['auth_id'];
+                                    ?>
+
+                                        <?php foreach ($users as $user) :
+                                            if ($user['id'] == $id) {
+                                                continue;
+                                            }
+                                        ?>
+                                            <tr>
+                                                <td><?= $number++; ?></td>
+                                                <td class="name"><?= $user['name'] ?></td>
+                                                <td class="email"><?= $user['email'] ?></td>
+
+                                                <td><?= date("d-m-Y H:i:s", strtotime($user['created_at'])) ?></td>
+                                                <td><?= date("d-m-Y H:i:s", strtotime($user['updated_at'])) ?></td>
+
+                                                <td><span class="badge badge-success">Success</span></td>
+                                            </tr>
+                                    <?php endforeach;
+                                    endif; ?>
+
+
+
                                 </tbody>
                             </table>
                         </div>

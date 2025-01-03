@@ -1,1 +1,32 @@
 /* Your Custom CSS Goes here */
+
+/* .email{
+    width: 200px;
+}
+
+.name{
+    width: 250px;
+}
+
+
+@media (max-width: 993px) {
+    .email{
+        width: 0px;
+    }
+    
+    .name{
+        width: 0px;
+    }
+} */
+
+/* ========= Mobile Device ========== */
+
+/* @media (max-width: 768px) {
+    .email{
+        width: 0px;
+    }
+    
+    .name{
+        width: 0px;
+    }
+} */
