@@ -52,7 +52,7 @@ include("../master/header.php");
                             <div class="col-md-12">
 
                                 <picture class="d-block my-4">
-                                    <img id="port_img" src="../../public/default/default.jpg" alt="portfolio create image" style="width: 100%; height: 150px; object-fit:contain;">
+                                    <img id="port_img" src="../../public/default/default.jpg" alt="portfolio create image" style="width: 100%; height: 100px; object-fit:contain;">
                                 </picture>
 
                                 <label for="file" class="form-label">Image</label>

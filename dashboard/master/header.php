@@ -10,6 +10,10 @@ if (!isset($_SESSION['auth_id'])) {
 } 
 
 
+$explode = explode('/', $_SERVER['PHP_SELF']);
+$link = end($explode);
+
+
 
 ?>
 
@@ -83,13 +87,13 @@ if (!isset($_SESSION['auth_id'])) {
                         Apps
                     </li>
        
-                    <li class="active-page">
+                    <li class="<?= ($link == 'home.php') ? 'active-page' : '' ?>">
                         <a href="../home/home.php" class="active"><i class="material-icons-two-tone">dashboard</i>Dashboard</a>
                     </li>
-                    <li class="active-page">
+                    <li class="<?= ($link == 'profile.php') ? 'active-page' : '' ?>">
                         <a href="../profile/profile.php" class="active"><i class="material-icons-two-tone">manage_accounts</i>Profile</a>
                     </li>
-                    <li class="active-page">
+                    <li class="<?= ($link == 'logout.php') ? 'active-page' : '' ?>">
                         <a href="../logout/logout.php" class="active"><i class="material-icons-two-tone">logout</i>logout</a>
                     </li>
                     <li>

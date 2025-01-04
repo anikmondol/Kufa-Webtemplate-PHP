@@ -92,10 +92,12 @@ if (isset($_REQUEST['update_info'])) {
                     `updated_at` = '$datetime' 
                 WHERE id = {$_SESSION['auth_id']}";
                 mysqli_query($conn, $query);
-                $_SESSION["update_info"] = "Image successfully update!!!";
+                $_SESSION["update_info"] = "Update Info successfully update!!!";
+                $_SESSION['auth_name'] = $name;
+                $_SESSION['auth_email'] = $email;
                 header("location: profile.php");
             } else {
-                $_SESSION["update_info_error"] = "Your giver Image doesn't match with our records !!!";
+                $_SESSION["update_info_error"] = "Your Information Image doesn't match with our records !!!";
                 header("location: profile.php");
             }
         }
@@ -140,12 +142,16 @@ if (isset($_REQUEST['update_password'])) {
         echo "error";
     } else {
 
-        $users_query = "select * FROM users";
+        
+        $encrypt_pass = sha1($password);
+
+        $users_query = "select * FROM users WHERE id = {$_SESSION['auth_id']} and password = '$encrypt_pass'";
         $users = mysqli_query($conn, $users_query);
         $result = mysqli_fetch_assoc($users);
 
+    
 
-        $encrypt_pass = sha1($password);
+
 
         if ($result['password'] === $encrypt_pass) {
 
