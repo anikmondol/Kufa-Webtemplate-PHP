@@ -3,9 +3,9 @@
 include("../master/header.php");
 
 
-$users_query = "select * FROM links where user_id = $id";
-$users = mysqli_query($conn, $users_query);
-$links = mysqli_fetch_assoc($users);
+$links_query = "select * FROM links where user_id = $id";
+$links = mysqli_query($conn, $links_query);
+$links = mysqli_fetch_assoc($links);
 
 ?>
 
