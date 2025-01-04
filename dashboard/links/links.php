@@ -28,7 +28,7 @@ $links = mysqli_fetch_assoc($users);
                 <div class="card">
                     <div class="card-body">
                         <div class="example-content">
-                            <p style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">Social Media</p>
+                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">Social Media</p>
                             <form class="row g-3" action="links_manage.php">
                                 <div class="col-md-6">
                                     <label for="facebook" class="form-label">Facebook</label>
@@ -105,9 +105,13 @@ $links = mysqli_fetch_assoc($users);
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <?php
+<?php
 
-                include("../master/footer.php");
+include("../master/footer.php");
 
-                ?>
+?>

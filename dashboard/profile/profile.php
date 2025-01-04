@@ -23,9 +23,9 @@ include("../master/header.php");
                 <div class="card">
                     <div class="card-body">
                         <form action="update.php" method="post" enctype="multipart/form-data">
-                            <p style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">Update Information</p>
+                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">Update Information</p>
                             <div class="col-md-12">
-                                <label for="input_name" class="form-label">Name</label>
+                                <label for="input_name" class="form-label">Title</label>
                                 <input name="name" type="text" class="form-control <?= (isset($_SESSION["name_error"])) ? "is-invalid" : ""; ?> " id="input_name">
 
                                 <!-- name error start -->
@@ -96,7 +96,7 @@ include("../master/header.php");
                 <div class="card">
                     <div class="card-body">
                         <form action="update.php" method="post">
-                            <p style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">Update Password</p>
+                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">Update Password</p>
                             <div class="col-md-12">
                                 <label for="old_inputPassword4" class="form-label">Old Password</label>
                                 <input name="password" type="password" class="form-control <?= (isset($_SESSION["password_error"])) ? "is-invalid" : ""; ?> " id="old_inputPassword4">
@@ -161,11 +161,12 @@ include("../master/header.php");
             </div>
 
         </div>
+    </div>
+</div>
 
 
+<?php
 
-        <?php
+include("../master/footer.php");
 
-        include("../master/footer.php");
-
-        ?>
+?>

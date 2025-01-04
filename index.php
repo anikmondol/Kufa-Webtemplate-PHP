@@ -84,6 +84,14 @@ $link = mysqli_fetch_assoc($links);
                                         <li class="nav-item"><a class="nav-link" href="#portfolio">portfolio</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                                         <li class="nav-item"><a class="nav-link" href="./authentication/register.php">Register</a></li>
+<!-- 
+                                        <?php if ($_SESSION['auth_id']) : ?>
+                                            <li class="nav-item"><a class="nav-link" href="./authentication/register.php">Dashboard</a></li>
+                                        <?php else : ?>
+                                            <li class="nav-item"><a class="nav-link" href="./authentication/register.php">Register</a></li>
+                                        <?php endif; ?> -->
+
+
                                     </ul>
                                 </div>
                                 <div class="header-btn">

@@ -160,17 +160,12 @@ $result = mysqli_fetch_assoc($users);
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
 
+<?php
 
+include("../master/footer.php");
 
-
-
-
-
-
-        <?php
-
-        include("../master/footer.php");
-
-        ?>
+?>
