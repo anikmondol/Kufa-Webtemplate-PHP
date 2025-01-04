@@ -47,7 +47,7 @@ if (isset($_REQUEST['submit'])) {
 
 
         $encrypt = sha1($password);
-        $count_query = "SELECT COUNT(*) AS 'count_result' FROM `users` WHERE email='$email' AND password='$encrypt'";
+        $count_query = "SELECT COUNT(*) AS 'count_result' FROM `users` WHERE email='$email' AND password='$encrypt' and id = 1";
         $connect = mysqli_query($conn, $count_query);
 
        

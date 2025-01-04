@@ -6,19 +6,25 @@ include("../../config/database.php");
 
 
 if (!isset($_SESSION['auth_id'])) {
-    header("location: ../../authentication/login.php");
-} 
+    header("location: ../../index.php");
+}
 
 
 $explode = explode('/', $_SERVER['PHP_SELF']);
 $link = end($explode);
 
+$id = 1;
+
+$users_query = "select * FROM users where  id = $id";
+$users = mysqli_query($conn, $users_query);
+$result = mysqli_fetch_assoc($users);
 
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +33,7 @@ $link = end($explode);
     <meta name="keywords" content="admin,dashboard">
     <meta name="author" content="stacks">
     <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    
+
     <!-- Title -->
     <title>Neptune - Responsive Admin Dashboard Template</title>
 
@@ -41,19 +47,19 @@ $link = end($explode);
     <link href="../../dashboard_assets/assets/plugins/pace/pace.css" rel="stylesheet">
     <link href="../../dashboard_assets/assets/css/custom.css" rel="stylesheet">
 
- 
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="../../dashboard_assets/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../dashboard_assets/assets/plugins/perfectscroll/perfect-scrollbar.css" rel="stylesheet">
     <link href="../../dashboard_assets/assets/plugins/pace/pace.css" rel="stylesheet">
     <link href="../../dashboard_assets/assets/plugins/highlight/styles/github-gist.css" rel="stylesheet">
     <link href="../../dashboard_assets/assets/plugins/datatables/datatables.min.css" rel="stylesheet">
-    
-
-    
 
 
-    
+
+
+
+
     <!-- Theme Styles -->
     <link href="../../dashboard_assets/assets/css/main.min.css" rel="stylesheet">
     <link href="../../dashboard_assets/assets/css/custom.css" rel="stylesheet">
@@ -68,14 +74,28 @@ $link = end($explode);
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+
 <body>
     <div class="app align-content-stretch d-flex flex-wrap">
         <div class="app-sidebar">
             <div class="logo">
                 <a href="index.html" class="logo-icon"><span class="logo-text">Neptune</span></a>
                 <div class="sidebar-user-switcher user-activity-online">
-                    <a href="#">
-                        <img src="../../dashboard_assets/assets/images/avatars/avatar.png">
+                    <a href="../profile/profile.php">
+
+                        <?php
+
+                        if ($result['image'] == 'default.png') {
+                            echo '<img style="border-radius: 50%; width: 50px; height: 50px; object-fit: cover;" src="../../public/default/default-profile.jpg">';
+                        } else {
+                            echo '<img style="border-radius: 50%; width: 50px; height: 50px; object-fit: cover;" src="../../public/profile/' . $result["image"] . '">';
+                        }
+
+
+                        ?>
+
+                        <!-- <img src="../../public/default/default-profile.jpg"> -->
+
                         <span class="activity-indicator"></span>
                         <span class="user-info-text"><?= isset($_SESSION['auth_name']) ? $_SESSION['auth_name']  : "admin"; ?><br><span class="user-state-info">On a call</span></span>
                     </a>
@@ -86,12 +106,15 @@ $link = end($explode);
                     <li class="sidebar-title">
                         Apps
                     </li>
-       
+
                     <li class="<?= ($link == 'home.php') ? 'active-page' : '' ?>">
                         <a href="../home/home.php" class="active"><i class="material-icons-two-tone">dashboard</i>Dashboard</a>
                     </li>
                     <li class="<?= ($link == 'profile.php') ? 'active-page' : '' ?>">
                         <a href="../profile/profile.php" class="active"><i class="material-icons-two-tone">manage_accounts</i>Profile</a>
+                    </li>
+                    <li class="<?= ($link == 'links.php') ? 'active-page' : '' ?>">
+                        <a href="../links/links.php" class="active"><i class="material-icons-two-tone">share</i>Links</a>
                     </li>
                     <li class="<?= ($link == 'logout.php') ? 'active-page' : '' ?>">
                         <a href="../logout/logout.php" class="active"><i class="material-icons-two-tone">logout</i>logout</a>
@@ -432,7 +455,7 @@ $link = end($explode);
                                     </ul>
                                 </li>
                             </ul>
-            
+
                         </div>
                         <div class="d-flex">
                             <ul class="navbar-nav">
@@ -450,11 +473,11 @@ $link = end($explode);
                                 </li>
                                 <li class="nav-item hidden-on-mobile">
                                     <a class="nav-link language-dropdown-toggle" href="#" id="languageDropDown" data-bs-toggle="dropdown"><img src="../../dashboard_assets/assets/images/flags/us.png" alt=""></a>
-                                        <ul class="dropdown-menu dropdown-menu-end language-dropdown" aria-labelledby="languageDropDown">
-                                            <li><a class="dropdown-item" href="#"><img src="../../dashboard_assets/assets/images/flags/germany.png" alt="">German</a></li>
-                                            <li><a class="dropdown-item" href="#"><img src="../../dashboard_assets/assets/images/flags/italy.png" alt="">Italian</a></li>
-                                            <li><a class="dropdown-item" href="#"><img src="../../dashboard_assets/assets/images/flags/china.png" alt="">Chinese</a></li>
-                                        </ul>
+                                    <ul class="dropdown-menu dropdown-menu-end language-dropdown" aria-labelledby="languageDropDown">
+                                        <li><a class="dropdown-item" href="#"><img src="../../dashboard_assets/assets/images/flags/germany.png" alt="">German</a></li>
+                                        <li><a class="dropdown-item" href="#"><img src="../../dashboard_assets/assets/images/flags/italy.png" alt="">Italian</a></li>
+                                        <li><a class="dropdown-item" href="#"><img src="../../dashboard_assets/assets/images/flags/china.png" alt="">Chinese</a></li>
+                                    </ul>
                                 </li>
                                 <li class="nav-item hidden-on-mobile">
                                     <a class="nav-link nav-notifications-toggle" id="notificationsDropDown" href="#" data-bs-toggle="dropdown">4</a>
@@ -534,5 +557,3 @@ $link = end($explode);
                     </div>
                 </nav>
             </div>
-
-            

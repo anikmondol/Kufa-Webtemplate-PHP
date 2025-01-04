@@ -54,7 +54,7 @@ session_start();
             <div class="logo">
                 <a href="index.html">Neptune</a>
             </div>
-            <p class="auth-description">Please enter your credentials to create an account.<br>Already have an account? <a href="login.php">Sign In</a></p>
+            <p class="auth-description">Please enter your credentials to create an account.<br>Already have an account? <a href="../../Kufa-Webtemplate-PHP/index.php">Back Home</a></p>
 
             <form action="register_post.php" method="post">
 

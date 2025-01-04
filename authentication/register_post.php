@@ -84,7 +84,7 @@ if (isset($_REQUEST['submit'])) {
             $_SESSION['register_success'] = "Registration Complete !!";
             $_SESSION['register_email'] = "$email";
             $_SESSION['register_password'] = "$password";
-            header("location: login.php");
+            header("location: ../../Kufa-Webtemplate-PHP/index.php");
         }
     }
 }
