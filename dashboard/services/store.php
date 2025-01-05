@@ -111,5 +111,29 @@ if (isset($_REQUEST['updata']) && isset($_REQUEST['edit_id'])) {
 
 
 
+if (isset($_GET['status_id'])) {
+    $status_id =  $_GET['status_id'];
+
+    $select_query = "SELECT * FROM services WHERE id='$status_id'";
+    $connect = mysqli_query($conn, $select_query);
+    $services = mysqli_fetch_assoc($connect);
+
+    if ($services['status'] == 'deactive') {
+        $update_query = "UPDATE services SET status='active' WHERE id='$status_id'";
+        mysqli_query($conn, $update_query);
+        $_SESSION["active_status"] = "services status active successfully complete !!!";
+        header("location: services.php");
+    } else {
+       
+        $update_query = "UPDATE services SET status='deactive' WHERE id='$status_id'";
+        mysqli_query($conn, $update_query);
+        $_SESSION["deactive_status"] = "services status deactive successfully complete !!!";
+        header("location: services.php");
+    }
+
+}
+
+
+
 
 ?>

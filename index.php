@@ -17,6 +17,10 @@ $links = mysqli_query($conn, $links_query);
 $link = mysqli_fetch_assoc($links);
 
 
+$services_query = "SELECT * FROM services";
+$services = mysqli_query($conn, $services_query);
+$result1 = mysqli_fetch_assoc($services);
+
 
 ?>
 
@@ -44,6 +48,12 @@ $link = mysqli_fetch_assoc($links);
     <link rel="stylesheet" href="./front_assets/css/default.css">
     <link rel="stylesheet" href="./front_assets/css/style.css">
     <link rel="stylesheet" href="./front_assets/css/responsive.css">
+
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 </head>
 
 <body class="theme-bg">
@@ -84,7 +94,7 @@ $link = mysqli_fetch_assoc($links);
                                         <li class="nav-item"><a class="nav-link" href="#portfolio">portfolio</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                                         <li class="nav-item"><a class="nav-link" href="./authentication/register.php">Register</a></li>
-<!-- 
+                                        <!-- 
                                         <?php if ($_SESSION['auth_id']) : ?>
                                             <li class="nav-item"><a class="nav-link" href="./authentication/register.php">Dashboard</a></li>
                                         <?php else : ?>
@@ -272,60 +282,42 @@ $link = mysqli_fetch_assoc($links);
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.2s">
-                            <i class="fab fa-react"></i>
-                            <h3>Creative Design</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum indust.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.4s">
-                            <i class="fab fa-free-code-camp"></i>
-                            <h3>Unlimited Features</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum indust.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.6s">
-                            <i class="fal fa-desktop"></i>
-                            <h3>Ultra Responsive</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum indust.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.2s">
-                            <i class="fal fa-lightbulb-on"></i>
-                            <h3>Creative Ideas</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum indust.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.4s">
-                            <i class="fal fa-edit"></i>
-                            <h3>Easy Customization</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum indust.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.6s">
-                            <i class="fal fa-headset"></i>
-                            <h3>Supper Support</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum indust.
-                            </p>
-                        </div>
-                    </div>
+
+
+
+                    <?php
+
+                    if (empty($result1)):
+                    ?>
+                        <tr>
+                            <th colspan="5" class="text-center text-danger">
+                                No data found!!
+                            </th>
+                        </tr>
+                    <?php
+                    else:
+                    ?>
+                        <?php foreach ($services as $service) :
+
+                        ?>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.2s">
+                                    <i class="<?= $service['icon'] ?>"></i>
+                                    <h3><?= $service['title'] ?></h3>
+                                    <p>
+                                        <?= $service['description'] ?>
+                                    </p>
+                                </div>
+                            </div>
+                    <?php endforeach;
+                    endif; ?>
+
+
+
+
+
+
+
                 </div>
             </div>
         </section>
