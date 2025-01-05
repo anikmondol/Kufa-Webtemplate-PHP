@@ -127,6 +127,12 @@ $result = mysqli_fetch_assoc($users);
                     <li class="<?= ($link == 'sponsor.php') ? 'active-page' : '' ?>">
                         <a href="../sponsor/sponsor.php" class="active"><i class="material-icons-two-tone">volunteer_activism</i>sponsor</a>
                     </li>
+                    <li class="<?= ($link == 'education.php') ? 'active-page' : '' ?>">
+                        <a href="../education/education.php" class="active"><i class="material-icons-two-tone">school</i>Education</a>
+                    </li>
+                    <li class="<?= ($link == 'email.php') ? 'active-page' : '' ?>">
+                        <a href="../email/email.php" class="active"><i class="material-icons-two-tone">mark_email_unread</i>Email</a>
+                    </li>
                     <li class="<?= ($link == 'logout.php') ? 'active-page' : '' ?>">
                         <a href="../logout/logout.php" class="active"><i class="material-icons-two-tone">logout</i>Logout</a>
                     </li>

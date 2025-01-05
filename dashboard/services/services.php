@@ -151,10 +151,10 @@ $result = mysqli_fetch_assoc($services);
 
                                         ?>
                                             <tr>
-                                                <td><?= $number++; ?></td>
-                                                <td><i class="fa-3x <?= $service['icon'] ?>"></i></td>
-                                                <td><?= $service['title'] ?></td>
-                                                <td>
+                                                <td class="text-center"><?= $number++; ?></td>
+                                                <td class="text-center"><i class="fa-3x <?= $service['icon'] ?>"></i></td>
+                                                <td class="text-center"><?= $service['title'] ?></td>
+                                                <td class="text-center">
                                                 <?php
                                                 if (($service['status'] == 'deactive')) {  ?>
                                                     <button class=" btn btn-warning btn-sm ">
@@ -164,9 +164,9 @@ $result = mysqli_fetch_assoc($services);
                                                         <i class="material-icons">notifications</i> Active</button>
                                                 <?php } ?>
                                                 </td>
-                                                <td><?= date("d-m-Y h:i:s A", strtotime($service["created_at"])); ?></td>
-                                                <td><?= date("d-m-Y h:i:s A", strtotime($service["updated_at"])); ?></td>
-                                                <td><span class="material-icons-two-tone" data-bs-toggle="modal" data-bs-target="#<?= $modalId; ?>"> more_vert </span></td>
+                                                <td class="text-center"><?= date("d-m-Y h:i:s A", strtotime($service["created_at"])); ?></td>
+                                                <td class="text-center"><?= date("d-m-Y h:i:s A", strtotime($service["updated_at"])); ?></td>
+                                                <td class="text-center"><span class="material-icons-two-tone" data-bs-toggle="modal" data-bs-target="#<?= $modalId; ?>"> more_vert </span></td>
 
                                                 <!-- Vertically centered modal with dynamic modal ID -->
                                                 <div class="modal fade" id="<?= $modalId; ?>" tabindex="-1" aria-labelledby="<?= $modalId; ?>Label" aria-hidden="true">

@@ -26,6 +26,16 @@ $portfolios = mysqli_query($conn, $portfolios_query);
 $result2 = mysqli_fetch_assoc($portfolios);
 
 
+
+$sponsor_query = "SELECT * FROM sponsor";
+$sponsor = mysqli_query($conn, $sponsor_query);
+$result3 = mysqli_fetch_assoc($sponsor);
+
+$educations_query = "SELECT * FROM educations";
+$educations = mysqli_query($conn, $educations_query);
+$result4 = mysqli_fetch_assoc($educations);
+
+
 ?>
 
 <!doctype html>
@@ -205,69 +215,45 @@ $result2 = mysqli_fetch_assoc($portfolios);
                             <h2>About Me</h2>
                         </div>
                         <div class="about-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, sed repudiandae odit deserunt, quas
-                                quibusdam necessitatibus nesciunt eligendi esse sit non reprehenderit quisquam asperiores maxime
-                                blanditiis culpa vitae velit. Numquam!</p>
+                            <p>I am Anik Mondol, a Jr. PHP & Laravel Developer with nearly two years of hands-on experience in the field. Proficient in PHP and skilled in the Laravel framework, I specialize in crafting efficient and scalable web solutions. My passion for coding drives me to stay updated with the latest industry trends and technologies.</p>
                             <h3>Education:</h3>
                         </div>
-                        <!-- Education Item -->
-                        <div class="education">
-                            <div class="year">2020</div>
-                            <div class="line"></div>
-                            <div class="location">
-                                <span>PHD of Interaction Design &amp; Animation</span>
-                                <div class="progressWrapper">
-                                    <div class="progress">
-                                        <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+
+                        <?php
+
+                        if (empty($result2)):
+                        ?>
+                            <tr>
+                                <th colspan="5" class="text-center text-danger">
+                                    No data found!!
+                                </th>
+                            </tr>
+                        <?php
+                        else:
+                        ?>
+                            <?php foreach ($educations as $item) :
+
+                            ?>
+                                <!-- Education Item -->
+                                <div class="education">
+                                    <div class="year"><?= $item['year'] ?></div>
+                                    <div class="line"></div>
+                                    <div class="location">
+                                        <span><?= $item['title'] ?></span>
+                                        <div class="progressWrapper">
+                                            <div class="progress">
+                                                <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: <?= $item['percentage'] ?>%;" aria-valuenow="<?= $item['percentage'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <!-- End Education Item -->
-                        <!-- Education Item -->
-                        <div class="education">
-                            <div class="year">2016</div>
-                            <div class="line"></div>
-                            <div class="location">
-                                <span>Master of Database Administration</span>
-                                <div class="progressWrapper">
-                                    <div class="progress">
-                                        <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Education Item -->
-                        <!-- Education Item -->
-                        <div class="education">
-                            <div class="year">2010</div>
-                            <div class="line"></div>
-                            <div class="location">
-                                <span>Bachelor of Computer Engineering</span>
-                                <div class="progressWrapper">
-                                    <div class="progress">
-                                        <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Education Item -->
-                        <!-- Education Item -->
-                        <div class="education">
-                            <div class="year">2005</div>
-                            <div class="line"></div>
-                            <div class="location">
-                                <span>Diploma of Computer</span>
-                                <div class="progressWrapper">
-                                    <div class="progress">
-                                        <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s" data-wow-duration="2s" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Education Item -->
+                                <!-- End Education Item -->
+                        <?php endforeach;
+                        endif; ?>
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -413,7 +399,6 @@ $result2 = mysqli_fetch_assoc($portfolios);
                 <div class="fact-wrap">
                     <div class="row justify-content-between">
 
-
                         <?php
 
                         if (empty($result2)):
@@ -499,36 +484,38 @@ $result2 = mysqli_fetch_assoc($portfolios);
         <div class="barnd-area pt-100 pb-100">
             <div class="container">
                 <div class="row brand-active">
-                    <div class="col-xl-2">
+
+                    <!-- <div class="col-xl-2">
                         <div class="single-brand">
                             <img src="./front_assets/img/brand/brand_img01.png" alt="img">
                         </div>
-                    </div>
-                    <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="./front_assets/img/brand/brand_img02.png" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="./front_assets/img/brand/brand_img03.png" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="./front_assets/img/brand/brand_img04.png" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="./front_assets/img/brand/brand_img05.png" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="./front_assets/img/brand/brand_img03.png" alt="img">
-                        </div>
-                    </div>
+                    </div> -->
+
+                    <?php
+
+                    if (empty($result3)):
+                    ?>
+                        <tr>
+                            <th colspan="5" class="text-center text-danger">
+                                No data found!!
+                            </th>
+                        </tr>
+                    <?php
+                    else:
+                    ?>
+                        <?php foreach ($sponsor as $port) :
+
+                        ?>
+
+                            <div class="col-xl-2">
+                                <div class="single-brand">
+                                    <img src="./public/sponsor/<?= $port['image'] ?>" alt="img">
+                                </div>
+                            </div>
+                    <?php endforeach;
+                    endif; ?>
+
+
                 </div>
             </div>
         </div>
@@ -545,25 +532,35 @@ $result2 = mysqli_fetch_assoc($portfolios);
                         </div>
                         <div class="contact-content">
                             <p>Event definition is - somthing that happens occurre How evesnt sentence. Synonym when an unknown printer took a galley.</p>
-                            <h5>OFFICE IN <span>NEW YORK</span></h5>
+                            <h5>OFFICE IN <span>Bangladesh</span></h5>
                             <div class="contact-list">
                                 <ul>
-                                    <li><i class="fas fa-map-marker"></i><span>Address :</span>Event Center park WT 22 New York</li>
-                                    <li><i class="fas fa-headphones"></i><span>Phone :</span>+9 125 645 8654</li>
-                                    <li><i class="fas fa-globe-asia"></i><span>e-mail :</span>info@exemple.com</li>
+                                    <li><i class="fas fa-map-marker"></i><span>Address :</span>Nawabganj, Dhaka, Bangladesh</li>
+                                    <li><i class="fas fa-headphones"></i><span>Phone :</span>+880 193-165-4590</li>
+                                    <li><i class="fas fa-globe-asia"></i><span>e-mail :</span>anikmondol558363@gmail.com</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-6">
                         <div class="contact-form">
-                            <form action="#">
-                                <input type="text" placeholder="your name *">
-                                <input type="email" placeholder="your email *">
-                                <textarea name="message" id="message" placeholder="your message *"></textarea>
-                                <button class="btn">SEND</button>
+                            <form action="./dashboard/email/action.php" method="post">
+                                <input name="name" type="text" placeholder="your name *">
+                                <input name="email" type="email" placeholder="your email *">
+                                <textarea name="body" id="message" placeholder="your message *"></textarea>
+                                <button type="submit" class="btn" name="email_sender">SEND</button>
                             </form>
                         </div>
+                        <?php if (isset($_SESSION['insert_done'])) :  ?>
+                            <div class="alert alert-custom d-flex align-items-center justify-content-center" role="alert">
+                                <div class="custom-alert-icon icon-success"><i class="material-icons-outlined">add_box</i></div>
+                                <div class="alert-content">
+                                    <span class="alert-title text-success"><span class="m-1"><?php echo $_SESSION['insert_done']; ?></span> </span>
+                                </div>
+                            </div>
+                        <?php endif;
+                        unset($_SESSION['insert_done']); ?>
                     </div>
                 </div>
             </div>
@@ -580,7 +577,7 @@ $result2 = mysqli_fetch_assoc($portfolios);
                 <div class="row align-items-center">
                     <div class="col-12">
                         <div class="copyright-text text-center">
-                            <p>Copyright© <span>Kufa</span> | All Rights Reserved</p>
+                            <p>Copyright© <span>Anik Mondol</span> | All Rights Reserved</p>
                         </div>
                     </div>
                 </div>

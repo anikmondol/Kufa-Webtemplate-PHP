@@ -3,10 +3,10 @@
 include("../master/header.php");
 
 
+$educations_query = "SELECT * FROM educations";
+$educations = mysqli_query($conn, $educations_query);
+$result = mysqli_fetch_assoc($educations);
 
-$portfolios_query = "SELECT * FROM portfolios";
-$portfolios = mysqli_query($conn, $portfolios_query);
-$result = mysqli_fetch_assoc($portfolios);
 
 ?>
 
@@ -17,63 +17,63 @@ $result = mysqli_fetch_assoc($portfolios);
             <div class="row">
                 <div class="col">
                     <div class="page-description">
-                        <h2 class="fw-bold">Portfolios</h2>
+                        <h2 class="fw-bold">sponsor</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <?php if (isset($_SESSION['portfolios_insert'])) :  ?>
+                    <?php if (isset($_SESSION['education_insert'])) :  ?>
                         <div class="alert alert-custom d-flex align-items-center justify-content-center" role="alert">
                             <div class="custom-alert-icon icon-success"><i class="material-icons-outlined">add_box</i></div>
                             <div class="alert-content">
-                                <span class="alert-title text-success"><span class="m-1"><?php echo $_SESSION['portfolios_insert']; ?></span> </span>
+                                <span class="alert-title text-success"><span class="m-1"><?php echo $_SESSION['education_insert']; ?></span> </span>
                             </div>
                         </div>
                     <?php endif;
-                    unset($_SESSION['portfolios_insert']); ?>
+                    unset($_SESSION['education_insert']); ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <?php if (isset($_SESSION['portfolios_error'])) :  ?>
+                    <?php if (isset($_SESSION['education_error'])) :  ?>
                         <div class="alert alert-custom d-flex align-items-center justify-content-center" role="alert">
                             <div class="custom-alert-icon icon-warning"><i class="material-icons-outlined">warning</i></div>
                             <div class="alert-content">
-                                <span class="alert-title text-danger"><span class="m-1"><?php echo $_SESSION['portfolios_error']; ?></span> </span>
+                                <span class="alert-title text-danger"><span class="m-1"><?php echo $_SESSION['education_error']; ?></span> </span>
                             </div>
                         </div>
                     <?php endif;
-                    unset($_SESSION['portfolios_error']); ?>
+                    unset($_SESSION['education_error']); ?>
                 </div>
             </div>
 
 
             <div class="row">
                 <div class="col-12">
-                    <?php if (isset($_SESSION['portfolios_delete'])) :  ?>
+                    <?php if (isset($_SESSION['education_delete'])) :  ?>
                         <div class="alert alert-custom d-flex align-items-center justify-content-center" role="alert">
                             <div class="custom-alert-icon icon-danger"><i class="material-icons-outlined">delete_outline</i></div>
                             <div class="alert-content">
-                                <span class="alert-title text-danger"><span class="m-1"><?php echo $_SESSION['portfolios_delete']; ?></span> </span>
+                                <span class="alert-title text-danger"><span class="m-1"><?php echo $_SESSION['education_delete']; ?></span> </span>
                             </div>
                         </div>
                     <?php endif;
-                    unset($_SESSION['portfolios_delete']); ?>
+                    unset($_SESSION['education_delete']); ?>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-12">
-                    <?php if (isset($_SESSION['portfolios_update'])) :  ?>
+                    <?php if (isset($_SESSION['education_update'])) :  ?>
                         <div class="alert alert-custom d-flex align-items-center justify-content-center" role="alert">
                             <div class="custom-alert-icon icon-success"><i class="material-icons-outlined">update</i></div>
                             <div class="alert-content">
-                                <span class="alert-title text-success"><span class="m-1"><?php echo $_SESSION['portfolios_update']; ?></span> </span>
+                                <span class="alert-title text-success"><span class="m-1"><?php echo $_SESSION['education_update']; ?></span> </span>
                             </div>
                         </div>
                     <?php endif;
-                    unset($_SESSION['portfolios_update']); ?>
+                    unset($_SESSION['education_update']); ?>
                 </div>
             </div>
 
@@ -112,7 +112,7 @@ $result = mysqli_fetch_assoc($portfolios);
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between mb-5">
-                                <h4 class="fw-bold">Portfolios List</h4>
+                                <h4 class="fw-bold">sponsor List</h4>
                                 <a href="create.php"><button type="button" class="btn btn-primary"><i class="material-icons">add</i>Create</button> </a>
                             </div>
                             <table id="datatable3" class="display nowrap" style="width:100%">
@@ -120,9 +120,9 @@ $result = mysqli_fetch_assoc($portfolios);
                                     <tr>
                                     <tr>
                                         <th>S.NO</th>
-                                        <th>Icon</th>
                                         <th>Title</th>
-                                        <th>Feedback Number</th>
+                                        <th>Year</th>
+                                        <th>Percentage</th>
                                         <th>Status</th>
                                         <th>Created</th>
                                         <th>Update</th>
@@ -137,7 +137,7 @@ $result = mysqli_fetch_assoc($portfolios);
                                     if (empty($result)):
                                     ?>
                                         <tr>
-                                            <th colspan="5" class="text-center text-danger">
+                                            <th colspan="6" class="text-center text-danger">
                                                 No data found!!
                                             </th>
                                         </tr>
@@ -146,19 +146,19 @@ $result = mysqli_fetch_assoc($portfolios);
                                         $id = $_SESSION['auth_id'];
                                     ?>
 
-                                        <?php foreach ($portfolios as $portfolio) :
+                                        <?php foreach ($educations as $item) :
 
-                                            $modalId = "centeredModal" . $portfolio['id'];
+                                            $modalId = "centeredModal" . $item['id'];
 
                                         ?>
                                             <tr>
-                                                <td class="text-center"><?= $number++; ?></td>
-                                                <td class="text-center"><i class="fa-3x <?= $portfolio['icon'] ?>"></i></td>
-                                                <td class="text-center"><?= $portfolio['title'] ?></td>
-                                                <td class="text-center"><?= $portfolio['feedback'] ?></td>
+                                                <td><?= $number++; ?></td>
+                                                <td class="text-center"><?= $item['title'] ?></td>
+                                                <td class="text-center"><?= $item['year'] ?></td>
+                                                <td class="text-center"><?= $item['percentage'] ?> %</td>
                                                 <td class="text-center">
                                                 <?php
-                                                if (($portfolio['status'] == 'deactive')) {  ?>
+                                                if (($item['status'] == 'deactive')) {  ?>
                                                     <button class=" btn btn-warning btn-sm ">
                                                         <i class="material-icons">notifications_off</i> Deactive</button>
                                                 <?php } else { ?>
@@ -166,9 +166,9 @@ $result = mysqli_fetch_assoc($portfolios);
                                                         <i class="material-icons">notifications</i> Active</button>
                                                 <?php } ?>
                                                 </td>
-                                                <td class="text-center"><?= date("d-m-Y h:i:s A", strtotime($portfolio["created_at"])); ?></td>
-                                                <td class="text-center"><?= date("d-m-Y h:i:s A", strtotime($portfolio["updated_at"])); ?></td>
-                                                <td class="text-center"><span class="material-icons-two-tone" data-bs-toggle="modal" data-bs-target="#<?= $modalId; ?>"> more_vert </span></td>
+                                                <td><?= date("d-m-Y h:i:s A", strtotime($item["created_at"])); ?></td>
+                                                <td><?= date("d-m-Y h:i:s A", strtotime($item["updated_at"])); ?></td>
+                                                <td><span class="material-icons-two-tone" data-bs-toggle="modal" data-bs-target="#<?= $modalId; ?>"> more_vert </span></td>
 
                                                 <!-- Vertically centered modal with dynamic modal ID -->
                                                 <div class="modal fade" id="<?= $modalId; ?>" tabindex="-1" aria-labelledby="<?= $modalId; ?>Label" aria-hidden="true">
@@ -179,16 +179,16 @@ $result = mysqli_fetch_assoc($portfolios);
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="font-size: 10px;"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <a href="edit.php?editId=<?= $portfolio["id"] ?>"><button type="button" class="btn btn-info btn-sm"><i class="material-icons">edit</i> Edit</button></a>
-                                                                <a onclick="return confirm('Are you sure?');" href="store.php?deleteId=<?= $portfolio["id"] ?>"><button type="button" class="btn btn-danger btn-sm"><i class="material-icons">delete_outline</i> Delete</button></a>
+                                                                <a href="edit.php?editId=<?= $item["id"] ?>"><button type="button" class="btn btn-info btn-sm"><i class="material-icons">edit</i> Edit</button></a>
+                                                                <a onclick="return confirm('Are you sure?');" href="store.php?deleteId=<?= $item["id"] ?>"><button type="button" class="btn btn-danger btn-sm"><i class="material-icons">delete_outline</i> Delete</button></a>
                                                                 <?php
-                                                                if (($portfolio['status'] == 'deactive')) {  ?>
-                                                                   <a href="store.php?status_id=<?= $portfolio['id'] ?>">
+                                                                if (($item['status'] == 'deactive')) {  ?>
+                                                                   <a href="store.php?status_id=<?= $item['id'] ?>">
                                                                         <button class=" btn btn-success btn-sm">
                                                                             <i class="material-icons">notifications</i> Active</button>
                                                                     </a>
                                                                 <?php } else { ?>
-                                                                    <a href="store.php?status_id=<?= $portfolio['id'] ?>"> <button class=" btn btn-warning btn-sm ">
+                                                                    <a href="store.php?status_id=<?= $item['id'] ?>"> <button class=" btn btn-warning btn-sm ">
                                                                             <i class="material-icons">notifications_off</i> Deactive</button>
                                                                     </a>
                                                                 <?php } ?>

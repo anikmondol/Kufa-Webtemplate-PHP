@@ -138,14 +138,14 @@ $result = mysqli_fetch_assoc($users);
                                             }
                                         ?>
                                             <tr>
-                                                <td><?= $number++; ?></td>
-                                                <td class="name"><?= $user['name'] ?></td>
-                                                <td class="email"><?= $user['email'] ?></td>
+                                                <td class="text-center"><?= $number++; ?></td>
+                                                <td class="text-center" class="name"><?= $user['name'] ?></td>
+                                                <td class="text-center" class="email"><?= $user['email'] ?></td>
 
-                                                <td><?= date("d-m-Y h:i:s A", strtotime($user["created_at"])); ?></td>
-                                                <td><?= date("d-m-Y H:i:s A", strtotime($user['updated_at'])) ?></td>
+                                                <td class="text-center"><?= date("d-m-Y h:i:s A", strtotime($user["created_at"])); ?></td>
+                                                <td class="text-center"><?= date("d-m-Y H:i:s A", strtotime($user['updated_at'])) ?></td>
 
-                                                <td><span class="badge badge-success">Success</span></td>
+                                                <td class="text-center"><span class="badge badge-success">Success</span></td>
                                             </tr>
                                     <?php endforeach;
                                     endif; ?>
