@@ -13,9 +13,10 @@ if (isset($_REQUEST["editId"])) {
     
     $id = $_REQUEST['editId'];
 
-    $services_query = "SELECT * FROM services where id = $id";
-    $services = mysqli_query($conn, $services_query);
-    $result = mysqli_fetch_assoc($services);
+    $portfolios_query = "SELECT * FROM portfolios where id = $id";
+    $portfolios = mysqli_query($conn, $portfolios_query);
+    $result = mysqli_fetch_assoc($portfolios);
+
     
 }
 
@@ -46,7 +47,7 @@ if (isset($_REQUEST["editId"])) {
                             </div>
                             <div class="col-md-12">
                                 <label for="new_inputPassword4" class="form-label">Description</label>
-                                <textarea class="form-control " name="description" id="new_inputPassword4" rows="5" cols="30"><?= $result['description'] ?></textarea>
+                                <input class="form-control " name="description" id="new_inputPassword4" rows="5" cols="30" value="<?= $result['feedback'] ?>"></input>
 
                             </div>
                             <div class="col-md-12">
