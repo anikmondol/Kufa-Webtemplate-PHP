@@ -14,7 +14,7 @@ include("../../public/fonts/fonts.php");
             <div class="row">
                 <div class="col">
                     <div class="page-description">
-                        <h2 class="fw-bold">Create Services</h2>
+                        <h2 class="fw-bold">Create Portfolios</h2>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,8 @@ include("../../public/fonts/fonts.php");
                 <div class="card">
                     <div class="card-body">
                         <form action="store.php" method="post">
-                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">USER SERVICES</p>
+                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">User Portfolios</p>
+                           
                             <div class="col-md-12">
                                 <label for="old_inputPassword4" class="form-label">Title</label>
                                 <input name="title" type="text" class="form-control <?= (isset($_SESSION["title_error"])) ? "is-invalid" : ""; ?> " id="old_inputPassword4">

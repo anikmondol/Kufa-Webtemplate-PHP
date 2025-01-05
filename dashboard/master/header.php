@@ -106,7 +106,6 @@ $result = mysqli_fetch_assoc($users);
                     <li class="sidebar-title">
                         Apps
                     </li>
-
                     <li>
                         <a target="_blank" href="../../index.php" class="active"><i class="material-icons-two-tone">preview</i>Site View</a>
                     </li>
@@ -124,6 +123,9 @@ $result = mysqli_fetch_assoc($users);
                     </li>
                     <li class="<?= ($link == 'portfolios.php') ? 'active-page' : '' ?>">
                         <a href="../portfolios/portfolios.php" class="active"><i class="material-icons-two-tone">emoji_events</i>Portfolios</a>
+                    </li>
+                    <li class="<?= ($link == 'sponsor.php') ? 'active-page' : '' ?>">
+                        <a href="../sponsor/sponsor.php" class="active"><i class="material-icons-two-tone">volunteer_activism</i>sponsor</a>
                     </li>
                     <li class="<?= ($link == 'logout.php') ? 'active-page' : '' ?>">
                         <a href="../logout/logout.php" class="active"><i class="material-icons-two-tone">logout</i>Logout</a>
