@@ -3,9 +3,9 @@
 include("../master/header.php");
 
 
-$sponsor_query = "SELECT * FROM sponsor";
-$sponsor = mysqli_query($conn, $sponsor_query);
-$result = mysqli_fetch_assoc($sponsor);
+$testimonials_query = "SELECT * FROM testimonials";
+$testimonials = mysqli_query($conn, $testimonials_query);
+$result = mysqli_fetch_assoc($testimonials);
 
 
 ?>
@@ -17,63 +17,63 @@ $result = mysqli_fetch_assoc($sponsor);
             <div class="row">
                 <div class="col">
                     <div class="page-description">
-                        <h2 class="fw-bold">sponsor</h2>
+                        <h2 class="fw-bold">Testimonials</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <?php if (isset($_SESSION['sponsor_inset'])) :  ?>
+                    <?php if (isset($_SESSION['update_info'])) :  ?>
                         <div class="alert alert-custom d-flex align-items-center justify-content-center" role="alert">
                             <div class="custom-alert-icon icon-success"><i class="material-icons-outlined">add_box</i></div>
                             <div class="alert-content">
-                                <span class="alert-title text-success"><span class="m-1"><?php echo $_SESSION['sponsor_inset']; ?></span> </span>
+                                <span class="alert-title text-success"><span class="m-1"><?php echo $_SESSION['update_info']; ?></span> </span>
                             </div>
                         </div>
                     <?php endif;
-                    unset($_SESSION['sponsor_inset']); ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <?php if (isset($_SESSION['image_error'])) :  ?>
-                        <div class="alert alert-custom d-flex align-items-center justify-content-center" role="alert">
-                            <div class="custom-alert-icon icon-warning"><i class="material-icons-outlined">warning</i></div>
-                            <div class="alert-content">
-                                <span class="alert-title text-danger"><span class="m-1"><?php echo $_SESSION['image_error']; ?></span> </span>
-                            </div>
-                        </div>
-                    <?php endif;
-                    unset($_SESSION['image_error']); ?>
+                    unset($_SESSION['update_info']); ?>
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col-12">
-                    <?php if (isset($_SESSION['sponsor_delete'])) :  ?>
+                    <?php if (isset($_SESSION['testimonials_delete'])) :  ?>
                         <div class="alert alert-custom d-flex align-items-center justify-content-center" role="alert">
                             <div class="custom-alert-icon icon-danger"><i class="material-icons-outlined">delete_outline</i></div>
                             <div class="alert-content">
-                                <span class="alert-title text-danger"><span class="m-1"><?php echo $_SESSION['sponsor_delete']; ?></span> </span>
+                                <span class="alert-title text-danger"><span class="m-1"><?php echo $_SESSION['testimonials_delete']; ?></span> </span>
                             </div>
                         </div>
                     <?php endif;
-                    unset($_SESSION['sponsor_delete']); ?>
+                    unset($_SESSION['testimonials_delete']); ?>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-12">
-                    <?php if (isset($_SESSION['sponsor_update'])) :  ?>
+                    <?php if (isset($_SESSION['testimonials_update'])) :  ?>
                         <div class="alert alert-custom d-flex align-items-center justify-content-center" role="alert">
                             <div class="custom-alert-icon icon-success"><i class="material-icons-outlined">update</i></div>
                             <div class="alert-content">
-                                <span class="alert-title text-success"><span class="m-1"><?php echo $_SESSION['sponsor_update']; ?></span> </span>
+                                <span class="alert-title text-success"><span class="m-1"><?php echo $_SESSION['testimonials_update']; ?></span> </span>
                             </div>
                         </div>
                     <?php endif;
-                    unset($_SESSION['sponsor_update']); ?>
+                    unset($_SESSION['testimonials_update']); ?>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <?php if (isset($_SESSION['testimonials_error'])) :  ?>
+                        <div class="alert alert-custom d-flex align-items-center justify-content-center" role="alert">
+                            <div class="custom-alert-icon icon-warning"><i class="material-icons-outlined">warning</i></div>
+                            <div class="alert-content">
+                                <span class="alert-title text-danger"><span class="m-1"><?php echo $_SESSION['testimonials_error']; ?></span> </span>
+                            </div>
+                        </div>
+                    <?php endif;
+                    unset($_SESSION['testimonials_error']); ?>
                 </div>
             </div>
 
@@ -112,7 +112,7 @@ $result = mysqli_fetch_assoc($sponsor);
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between mb-5">
-                                <h4 class="fw-bold">sponsor List</h4>
+                                <h4 class="fw-bold">Testimonials List</h4>
                                 <a href="create.php"><button type="button" class="btn btn-primary"><i class="material-icons">add</i>Create</button> </a>
                             </div>
                             <table id="datatable3" class="display nowrap" style="width:100%">
@@ -121,6 +121,8 @@ $result = mysqli_fetch_assoc($sponsor);
                                     <tr>
                                         <th>S.NO</th>
                                         <th>Image</th>
+                                        <th>Title</th>
+                                        <th>Subtitle</th>
                                         <th>Status</th>
                                         <th>Created</th>
                                         <th>Update</th>
@@ -135,7 +137,7 @@ $result = mysqli_fetch_assoc($sponsor);
                                     if (empty($result)):
                                     ?>
                                         <tr>
-                                            <th colspan="6" class="text-center text-danger">
+                                            <th colspan="8" class="text-center text-danger">
                                                 No data found!!
                                             </th>
                                         </tr>
@@ -144,23 +146,27 @@ $result = mysqli_fetch_assoc($sponsor);
                                         $id = $_SESSION['auth_id'];
                                     ?>
 
-                                        <?php foreach ($sponsor as $item) :
+                                        <?php foreach ($testimonials as $item) :
 
                                             $modalId = "centeredModal" . $item['id'];
 
                                         ?>
                                             <tr>
                                                 <td><?= $number++; ?></td>
-                                                <td><img style="height: 60px; width: 100%;" src="../../public/sponsor/<?= $item['image'] ?>" alt=""></></td>
+                                                <td><img style="height: 80px; width: 80px; border-radius: 2px;" src="../../public/testimonials/<?= $item['image'] ?>" alt="testimonials image"></>
+                                                </td>
+                                                <td><?= $item['title'] ?></td>
+                                                <td><?= $item['subtitle'] ?></td>
                                                 <td>
-                                                <?php
-                                                if (($item['status'] == 'deactive')) {  ?>
-                                                    <button class=" btn btn-warning btn-sm ">
-                                                        <i class="material-icons">notifications_off</i> Deactive</button>
-                                                <?php } else { ?>
-                                                    <button class=" btn btn-success btn-sm">
-                                                        <i class="material-icons">notifications</i> Active</button>
-                                                <?php } ?>
+
+                                                    <?php
+                                                    if (($item['status'] == 'deactive')) {  ?>
+                                                        <button class=" btn btn-warning btn-sm ">
+                                                            <i class="material-icons">notifications_off</i> Deactive</button>
+                                                    <?php } else { ?>
+                                                        <button class=" btn btn-success btn-sm">
+                                                            <i class="material-icons">notifications</i> Active</button>
+                                                    <?php } ?>
                                                 </td>
                                                 <td><?= date("d-m-Y h:i:s A", strtotime($item["created_at"])); ?></td>
                                                 <td><?= date("d-m-Y h:i:s A", strtotime($item["updated_at"])); ?></td>
@@ -179,7 +185,7 @@ $result = mysqli_fetch_assoc($sponsor);
                                                                 <a onclick="return confirm('Are you sure?');" href="store.php?deleteId=<?= $item["id"] ?>"><button type="button" class="btn btn-danger btn-sm"><i class="material-icons">delete_outline</i> Delete</button></a>
                                                                 <?php
                                                                 if (($item['status'] == 'deactive')) {  ?>
-                                                                   <a href="store.php?status_id=<?= $item['id'] ?>">
+                                                                    <a href="store.php?status_id=<?= $item['id'] ?>">
                                                                         <button class=" btn btn-success btn-sm">
                                                                             <i class="material-icons">notifications</i> Active</button>
                                                                     </a>

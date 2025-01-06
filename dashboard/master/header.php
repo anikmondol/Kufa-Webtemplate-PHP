@@ -133,6 +133,9 @@ $result = mysqli_fetch_assoc($users);
                     <li class="<?= ($link == 'email.php') ? 'active-page' : '' ?>">
                         <a href="../email/email.php" class="active"><i class="material-icons-two-tone">mark_email_unread</i>Email</a>
                     </li>
+                    <li class="<?= ($link == 'testimonials.php') ? 'active-page' : '' ?>">
+                        <a href="../testimonials/testimonials.php" class="active"><i class="material-icons-two-tone">contact_mail</i>Testimonials</a>
+                    </li>
                     <li class="<?= ($link == 'logout.php') ? 'active-page' : '' ?>">
                         <a href="../logout/logout.php" class="active"><i class="material-icons-two-tone">logout</i>Logout</a>
                     </li>

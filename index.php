@@ -36,6 +36,10 @@ $educations = mysqli_query($conn, $educations_query);
 $result4 = mysqli_fetch_assoc($educations);
 
 
+$testimonials_query = "SELECT * FROM testimonials";
+$testimonials = mysqli_query($conn, $testimonials_query);
+$result5 = mysqli_fetch_assoc($testimonials);
+
 ?>
 
 <!doctype html>
@@ -92,8 +96,8 @@ $result4 = mysqli_fetch_assoc($educations);
                     <div class="col-xl-12">
                         <div class="main-menu">
                             <nav class="navbar navbar-expand-lg">
-                                <a href="index.html" class="navbar-brand logo-sticky-none"><img src="./front_assets/img/logo/logo.png" alt="Logo"></a>
-                                <a href="index.html" class="navbar-brand s-logo-none"><img src="./front_assets/img/logo/s_logo.png" alt="Logo"></a>
+                                <a href="index.php" class="navbar-brand logo-sticky-none"><img src="./front_assets/img/logo/logo.png" alt="Logo"></a>
+                                <a href="index.php" class="navbar-brand s-logo-none"><img src="./front_assets/img/logo/s_logo.png" alt="Logo"></a>
                                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                                     data-target="#navbarNav">
                                     <span class="navbar-icon"></span>
@@ -108,14 +112,6 @@ $result4 = mysqli_fetch_assoc($educations);
                                         <li class="nav-item"><a class="nav-link" href="#portfolio">portfolio</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                                         <li class="nav-item"><a class="nav-link" href="./authentication/register.php">Register</a></li>
-                                        <!-- 
-                                        <?php if ($_SESSION['auth_id']) : ?>
-                                            <li class="nav-item"><a class="nav-link" href="./authentication/register.php">Dashboard</a></li>
-                                        <?php else : ?>
-                                            <li class="nav-item"><a class="nav-link" href="./authentication/register.php">Register</a></li>
-                                        <?php endif; ?> -->
-
-
                                     </ul>
                                 </div>
                                 <div class="header-btn">
@@ -135,30 +131,30 @@ $result4 = mysqli_fetch_assoc($educations);
                 </button>
             </div>
             <div class="logo-side mb-30">
-                <a href="index-2.html">
+                <a href="index.php">
                     <img src="./front_assets/img/logo/logo.png" alt="" />
                 </a>
             </div>
             <div class="side-info mb-30">
                 <div class="contact-list mb-30">
                     <h4>Office Address</h4>
-                    <p>123/A, Miranda City Likaoli
-                        Prikano, Dope</p>
+                    <p>Nawabganj, Dhaka, Bangladesh</p>
                 </div>
                 <div class="contact-list mb-30">
                     <h4>Phone Number</h4>
-                    <p>+0989 7876 9865 9</p>
+                    <p>+880 193-165-4590</p>
                 </div>
                 <div class="contact-list mb-30">
                     <h4>Email Address</h4>
-                    <p>info@example.com</p>
+                    <p>anikmondol558363@gmail.com</p>
                 </div>
             </div>
             <div class="social-icon-right mt-20">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="<?= $link['facebook'] ?>"><i class="fab fa-facebook-f"></i></a>
+                <a href="<?= $link['twitter'] ?>"><i class="fab fa-twitter"></i></a>
+                <a href="<?= $link['linkedin'] ?>"><i class="fab fa-linkedin"></i></a>
+                <a href="<?= $link['github'] ?>"><i class="fab fa-github"></i></a>
+
             </div>
         </div>
         <div class="offcanvas-overly"></div>
@@ -449,30 +445,38 @@ $result4 = mysqli_fetch_assoc($educations);
                 <div class="row justify-content-center">
                     <div class="col-xl-9 col-lg-10">
                         <div class="testimonial-active">
-                            <div class="single-testimonial text-center">
-                                <div class="testi-avatar">
-                                    <img src="./front_assets/img/images/testi_avatar.png" alt="img">
-                                </div>
-                                <div class="testi-content">
-                                    <h4><span>“</span> An event is a message sent by an object to signal the occur rence of an action. The action can causd user interaction such as a button click, or it can result <span>”</span></h4>
-                                    <div class="testi-avatar-info">
-                                        <h5>tonoy jakson</h5>
-                                        <span>head of idea</span>
+                            <?php
+                            if (empty($result5)):
+                            ?>
+                                <tr>
+                                    <th colspan="5" class="text-center text-danger">
+                                        No data found!!
+                                    </th>
+                                </tr>
+                            <?php
+                            else:
+                            ?>
+                                <?php foreach ($testimonials as $item) :
+
+                                ?>
+                                    <div class="single-testimonial text-center">
+                                        <div class="testi-avatar">
+                                            <img style="height: 100px; width: 100px; border-radius: 50%; object-fit: cover;" src="./public//testimonials/<?= $item['image'] ?>" alt="img">
+                                        </div>
+                                        <div class="testi-content">
+                                            <h4><span>“</span> <?= $item['description'] ?> <span>”</span></h4>
+                                            <div class="testi-avatar-info">
+                                                <h5><?= $item['title'] ?></h5>
+                                                <span><?= $item['subtitle'] ?></span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="single-testimonial text-center">
-                                <div class="testi-avatar">
-                                    <img src="./front_assets/img/images/testi_avatar.png" alt="img">
-                                </div>
-                                <div class="testi-content">
-                                    <h4><span>“</span> An event is a message sent by an object to signal the occur rence of an action. The action can causd user interaction such as a button click, or it can result <span>”</span></h4>
-                                    <div class="testi-avatar-info">
-                                        <h5>tonoy jakson</h5>
-                                        <span>head of idea</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach;
+                            endif; ?>
+
+
+
+
                         </div>
                     </div>
                 </div>
@@ -484,12 +488,6 @@ $result4 = mysqli_fetch_assoc($educations);
         <div class="barnd-area pt-100 pb-100">
             <div class="container">
                 <div class="row brand-active">
-
-                    <!-- <div class="col-xl-2">
-                        <div class="single-brand">
-                            <img src="./front_assets/img/brand/brand_img01.png" alt="img">
-                        </div>
-                    </div> -->
 
                     <?php
 

@@ -54,13 +54,13 @@ if (isset($_REQUEST["editId"])) {
                                 <label for="confirm_inputPassword4" class="form-label">Icon</label>
                                 <input value="<?= $result['icon'] ?>" name="icon" type="text" class="form-control click " id="confirm_inputPassword4">
 
-                                 <!-- name error start -->
+                                 <!-- error start -->
                                  <!-- <?php if (isset($_SESSION["icon_error"])) {
                                 ?>
                                     <div id="emailHelp" class="form-text m-b-md text-danger"> <?php echo $_SESSION["icon_error"]; ?> *</div>
                                 <?php }
                                 unset($_SESSION["icon_error"]); ?> -->
-                                 <!-- name error end -->
+                                 <!-- error end -->
 
                                 <div class="card my-3">
                                     <div class="card-body" style="overflow-y: scroll; height: 220px;">

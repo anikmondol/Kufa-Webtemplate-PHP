@@ -28,20 +28,20 @@ include("../master/header.php");
                                 <label for="input_name" class="form-label">Title</label>
                                 <input name="name" type="text" class="form-control <?= (isset($_SESSION["name_error"])) ? "is-invalid" : ""; ?> " id="input_name">
 
-                                <!-- name error start -->
+                                <!-- error start -->
                                 <?php if (isset($_SESSION["name_error"])) {
                                 ?>
                                     <div id="emailHelp" class="form-text m-b-md text-danger"> <?php echo $_SESSION["name_error"]; ?> *</div>
                                 <?php }
                                 unset($_SESSION["name_error"]); ?>
-                                <!-- name error end -->
+                                <!-- error end -->
 
                             </div>
                             <div class="col-md-12">
                                 <label for="input_email" class="form-label">Email</label>
                                 <input name="email" type="text" class="form-control <?= (isset($_SESSION["email_error"])) ? "is-invalid" : ""; ?> " id="input_email">
 
-                                <!-- name error start -->
+                                <!-- error start -->
                                 <?php if (isset($_SESSION["email_error"])) {
                                 ?>
                                     <div id="emailHelp" class="form-text m-b-md text-danger"> <?php echo $_SESSION["email_error"]; ?> *</div>
@@ -58,7 +58,7 @@ include("../master/header.php");
                                 <label for="file" class="form-label">Image</label>
                                 <input onchange="document.getElementById('port_img').src= window.URL.createObjectURL(this.files[0])" type="file" name="upload_image" class="form-control mb-2 <?= (isset($_SESSION["image_error"])) ? "is-invalid" : ""; ?> icon_value" id="exampleInputEmail1" aria-describedby="emailHelp">
 
-                                <!-- name error start -->
+                                <!-- error start -->
                                 <?php if (isset($_SESSION["image_error"])) {
                                 ?>
                                     <div id="emailHelp" class="form-text m-b-md text-danger"> <?php echo $_SESSION["image_error"]; ?> *</div>
@@ -68,22 +68,22 @@ include("../master/header.php");
                             </div>
 
 
-                            <!-- name error start -->
+                            <!-- error start -->
                             <?php if (isset($_SESSION["update_info"])) {
                             ?>
                                 <span style="font-size: 14px;" id="emailHelp" class="form-text m-b-md text-success"> <?php echo $_SESSION["update_info"]; ?> *</span>
                             <?php }
                             unset($_SESSION["update_info"]); ?>
-                            <!-- name error end -->
+                            <!-- error end -->
 
 
-                            <!-- name error start -->
+                            <!-- error start -->
                             <?php if (isset($_SESSION["update_info_error"])) {
                             ?>
                                 <span style="font-size: 14px;" id="emailHelp" class="form-text m-b-md text-danger"> <?php echo $_SESSION["update_info_error"]; ?> *</span>
                             <?php }
                             unset($_SESSION["update_info_error"]); ?>
-                            <!-- name error end -->
+                            <!-- error end -->
 
                             <div class="col-12">
                                 <button name="update_info" type="submit" class="btn mt-1 btn-primary">Update</button>
@@ -101,7 +101,7 @@ include("../master/header.php");
                                 <label for="old_inputPassword4" class="form-label">Old Password</label>
                                 <input name="password" type="password" class="form-control <?= (isset($_SESSION["password_error"])) ? "is-invalid" : ""; ?> " id="old_inputPassword4">
 
-                                <!-- name error start -->
+                                <!-- error start -->
                                 <?php if (isset($_SESSION["password_error"])) {
                                 ?>
                                     <div id="emailHelp" class="form-text m-b-md text-danger"> <?php echo $_SESSION["password_error"]; ?> *</div>
@@ -114,7 +114,7 @@ include("../master/header.php");
                                 <label for="new_inputPassword4" class="form-label">New Password</label>
                                 <input name="new_password" type="password" class="form-control <?= (isset($_SESSION["new_password_error"])) ? "is-invalid" : ""; ?> " id="new_inputPassword4">
 
-                                <!-- name error start -->
+                                <!-- error start -->
                                 <?php if (isset($_SESSION["new_password_error"])) {
                                 ?>
                                     <div id="emailHelp" class="form-text m-b-md text-danger"> <?php echo $_SESSION["new_password_error"]; ?> *</div>
@@ -126,7 +126,7 @@ include("../master/header.php");
                                 <label for="confirm_inputPassword4" class="form-label">Confirm Password</label>
                                 <input name="confirm_password" type="password" class="form-control <?= (isset($_SESSION["confirm_password_error"])) ? "is-invalid" : ""; ?> " id="confirm_inputPassword4">
 
-                                <!-- name error start -->
+                                <!-- error start -->
                                 <?php if (isset($_SESSION["confirm_password_error"])) {
                                 ?>
                                     <div id="emailHelp" class="form-text m-b-md text-danger"> <?php echo $_SESSION["confirm_password_error"]; ?> *</div>
@@ -135,22 +135,22 @@ include("../master/header.php");
                             </div>
 
 
-                            <!-- name error start -->
+                            <!-- error start -->
                             <?php if (isset($_SESSION["update_password"])) {
                             ?>
                                 <span style="font-size: 14px;" id="emailHelp" class="form-text m-b-md text-success"> <?php echo $_SESSION["update_password"]; ?> *</span>
                             <?php }
                             unset($_SESSION["update_password"]); ?>
-                            <!-- name error end -->
+                            <!-- error end -->
 
 
-                            <!-- name error start -->
+                            <!-- error start -->
                             <?php if (isset($_SESSION["update_password_error"])) {
                             ?>
                                 <span style="font-size: 14px;" id="emailHelp" class="form-text m-b-md text-danger"> <?php echo $_SESSION["update_password_error"]; ?> *</span>
                             <?php }
                             unset($_SESSION["update_password_error"]); ?>
-                            <!-- name error end -->
+                            <!-- error end -->
 
                             <div class="col-12">
                                 <button name="update_password" type="submit" class="btn mt-3 btn-primary">Update</button>

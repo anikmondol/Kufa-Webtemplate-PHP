@@ -63,6 +63,20 @@ if (isset($_REQUEST['deleteId'])) {
 
     $id = $_REQUEST['deleteId'];
 
+    $select_port = "SELECT * FROM sponsor WHERE id=$id";
+    $connectdb = mysqli_query($conn, $select_port);
+    $port = mysqli_fetch_assoc($connectdb);
+
+
+
+    if ($port['image']) {
+        $old_img = $port['image'];
+        $old_path = "../../public/sponsor/" . $old_img;
+        if (file_exists($old_path)) {
+            unlink($old_path);
+        }
+    }
+
     $sql = "DELETE FROM `sponsor` WHERE id = $id";
 
     mysqli_query($conn, $sql);
