@@ -247,9 +247,6 @@ $result5 = mysqli_fetch_assoc($testimonials);
                         <?php endforeach;
                         endif; ?>
 
-
-
-
                     </div>
                 </div>
             </div>
