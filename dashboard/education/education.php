@@ -17,7 +17,7 @@ $result = mysqli_fetch_assoc($educations);
             <div class="row">
                 <div class="col">
                     <div class="page-description">
-                        <h2 class="fw-bold">sponsor</h2>
+                        <h2 class="fw-bold">Education</h2>
                     </div>
                 </div>
             </div>
@@ -112,7 +112,7 @@ $result = mysqli_fetch_assoc($educations);
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between mb-5">
-                                <h4 class="fw-bold">sponsor List</h4>
+                                <h4 class="fw-bold">Education List</h4>
                                 <a href="create.php"><button type="button" class="btn btn-primary"><i class="material-icons">add</i>Create</button> </a>
                             </div>
                             <table id="datatable3" class="display nowrap" style="width:100%">

@@ -29,7 +29,7 @@ if (isset($_REQUEST["editId"])) {
             <div class="row">
                 <div class="col">
                     <div class="page-description">
-                        <h2 class="fw-bold">Create Services</h2>
+                        <h2 class="fw-bold">Edit Services</h2>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@ if (isset($_REQUEST["editId"])) {
                 <div class="card">
                     <div class="card-body">
                         <form action="store.php?edit_id=<?= $result['id'] ?>" method="post">
-                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">USER SERVICES</p>
+                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">SERVICES</p>
                             <div class="col-md-12">
                                 <label for="old_inputPassword4" class="form-label">Title</label>
                                 <input value="<?= $result['title'] ?>" name="title" type="text" class="form-control " id="old_inputPassword4">

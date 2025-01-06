@@ -12,18 +12,17 @@ include("../master/header.php");
             <div class="row">
                 <div class="col">
                     <div class="page-description">
-                        <h2 class="fw-bold">Create Testimonials</h2>
+                        <h2 class="fw-bold">Create Projects</h2>
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="row">
             <div class="col-xl-8 mx-auto">
                 <div class="card">
                     <div class="card-body">
                         <form action="store.php" method="post" enctype="multipart/form-data">
-                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">Insert Information</p>
+                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">Insert Projects</p>
                             <div class="col-md-12">
                                 <label for="input_name" class="form-label">Title</label>
                                 <input name="title" type="text" class="form-control <?= (isset($_SESSION["title_error"])) ? "is-invalid" : ""; ?> " id="input_name">

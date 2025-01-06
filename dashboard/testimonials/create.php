@@ -23,7 +23,7 @@ include("../master/header.php");
                 <div class="card">
                     <div class="card-body">
                         <form action="store.php" method="post" enctype="multipart/form-data">
-                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">Insert Information</p>
+                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">Insert Testimonials</p>
                             <div class="col-md-12">
                                 <label for="input_name" class="form-label">Title</label>
                                 <input name="title" type="text" class="form-control <?= (isset($_SESSION["title_error"])) ? "is-invalid" : ""; ?> " id="input_name">

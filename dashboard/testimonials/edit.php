@@ -22,7 +22,7 @@ if (isset($_REQUEST["editId"])) {
             <div class="row">
                 <div class="col">
                     <div class="page-description">
-                        <h2 class="fw-bold">Updata Testimonials</h2>
+                        <h2 class="fw-bold">Edit Testimonials</h2>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@ if (isset($_REQUEST["editId"])) {
                 <div class="card">
                     <div class="card-body">
                         <form action="store.php?edit_id=<?= $result['id'] ?>" method="post" enctype="multipart/form-data">
-                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">Insert Testimonials</p>
+                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">Testimonials</p>
                             <div class="col-md-12">
                                 <label for="input_name" class="form-label">Title</label>
                                 <input value="<?= $result['title'] ?>" name="title" type="text" class="form-control <?= (isset($_SESSION["title_error"])) ? "is-invalid" : ""; ?> " id="input_name">

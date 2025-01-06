@@ -14,7 +14,7 @@ include("../../public/fonts/fonts.php");
             <div class="row">
                 <div class="col">
                     <div class="page-description">
-                        <h2 class="fw-bold">Create Services</h2>
+                        <h2 class="fw-bold">Create Sponsor</h2>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@ include("../../public/fonts/fonts.php");
                 <div class="card">
                     <div class="card-body">
                     <form action="store.php" method="post" enctype="multipart/form-data">
-                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">Update Information</p>
+                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">Insert Sponsor</p>
                             <div class="col-md-12">
                                 <picture class="d-block my-4">
                                     <img id="port_img" src="../../public/default/default.jpg" alt="portfolio create image" style="width: 100%; height: 150px; object-fit:contain;">

@@ -22,7 +22,7 @@ include("../../public/fonts/fonts.php");
                 <div class="card">
                     <div class="card-body">
                         <form action="store.php" method="post">
-                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">User Portfolios</p>
+                            <p class="fw-bold" style="border-bottom: 0.5px solid gray; padding-bottom: 8px;">Portfolios</p>
                            
                             <div class="col-md-12">
                                 <label for="old_inputPassword4" class="form-label">Title</label>
